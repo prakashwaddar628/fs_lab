@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>program3</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 2rem;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+        #container {
+            max-width: 400px;
+            margin: auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        input, button{
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 1rem;
+        }
+        h2{
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome!</h1>
+        <form id="greetingForm">
+            <label for="nameInput">Enter your name:</label>
+            <input type="text" id="nameInput" placeholder="Type your name here..."/>
+            <button type="submit">Submit</button>
+        </form>
+        
+        <h2 id="greeting">Hello, stranger!</h2>
+
+        <button id="changeColorBtn">Change background color</button>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById("nameInput");
+        const greeting = document.getElementById("greeting");
+        const form = document.getElementById("greetingForm");
+        const colorBtn = document.getElementById("changeColorBtn");
+
+        nameInput.addEventListener("input",()=>{
+            const name = nameInput.value.trim();
+            greeting.textContent = name? `Hello, ${name}!`:"Hello, Stranger!";
+        });
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            alert(`Form submitted for ${nameInput.value || "Anonymous"}`);
+        });
+
+        colorBtn.addEventListener("click",()=>{
+            const randColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 85%)`;
+            document.body.style.backgroundColor = randColor;
+        });
+    </script>
+</body>
+</html>
